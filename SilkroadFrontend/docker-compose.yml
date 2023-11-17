@@ -1,0 +1,17 @@
+services:
+  silkroad-front:
+    image: silkroad-front
+    container_name: silkroad-front
+    # -it 옵션
+    stdin_open: true
+    tty: true
+    #
+    build:
+      args:
+        API_URL: ${API_URL}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src:ro
+    env_file:
+      - ./.env
