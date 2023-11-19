@@ -121,7 +121,7 @@ export function DetailPage() {
             >
               <div style={{ paddingBottom: '128px' }} />
               <DisplayLarge color="#000">
-                {occupationData.occupation}
+                {occupationData.occupation.replace("\\",'').replace('"','')}
                 {/* {occupationData.title.split(' (')[0]} */}
               </DisplayLarge>
               {/* <div style={{ paddingBottom: '32px' }} />
