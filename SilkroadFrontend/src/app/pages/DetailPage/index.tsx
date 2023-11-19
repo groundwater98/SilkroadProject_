@@ -237,9 +237,9 @@ export function DetailPage() {
               }}
             >
               <DisplayLarge color="#000">{outlookData.title}</DisplayLarge>
-              {Object.entries(outlookData.positive).length > 0 &&
-              Object.entries(outlookData.negative).length > 0 &&
-              Object.entries(outlookData.additionalConsider).length > 0 &&
+              {Object.entries(outlookData.positive).length > 0 ||
+              Object.entries(outlookData.negative).length > 0 ||
+              Object.entries(outlookData.additionalConsider).length > 0 ||
               Object.entries(outlookData.viewOfExpert).length > 0 ? (
                 <div
                   style={{
