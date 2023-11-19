@@ -5,7 +5,7 @@ from django.http import HttpResponse
 import json
 from myapp.main import generate_outlook, generate_roadmap 
 
-#@csrf_exempt
+
 @require_http_methods(["POST"])  # POST 요청만 허용
 def response_roadmap(request):
     try:
@@ -28,7 +28,6 @@ def response_roadmap(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-#@csrf_exempt
 @require_http_methods(["POST"])  # POST 요청만 허용
 def response_outlook(request):
     try:
