@@ -8,10 +8,10 @@ openai.api_key = cfg.gpt_config["api_key"]
 # Build the final RoadMap
 def summary(bard):
    
-    role1 = "Please translate what you received into Korean and Answer it. And please don't remove or change any special characters like '*' in the input you receive"
+    role1 = "Please translate what you received into Korean. And please never remove or change special characters such as '*' from the input received. And never change the input, just translate it into the format you entered and print it out."
     role2 = "If it's in Korean, don't change or add any letters, just print it out as it is"
     response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
+        model = "gpt-4",
         #model = "gpt-4",
         messages = [
             {"role": "system", "content": role1},
@@ -26,7 +26,7 @@ def gpt_check(job):
     role = """You are the role of answering just only 'Yes' or 'No' unconditionally to see if the job I enter exists. Also, Please don't say anything extra than 'Yes' or 'No'. please, please, please don't say anything except "Yes" or "No"."""
     
     response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
+        model = "gpt-4",
         messages=[
             {"role":"system", "content": role},
             {"role": "user", "content": job}

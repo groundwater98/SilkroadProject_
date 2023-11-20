@@ -13,7 +13,7 @@ predict_form = cfg.bard_config['predict_answer_form']
 def bard_roadmap(job, date):
  
     question = f"""Please create a detailed roadmap for the time period {date} for {job} in keyword text format specifically from the perspective of an expert on a monthly basis.Also, if you have any certificates or materials needed for the course, please recommend them separately.
-                I give you a basic form. Please make it in this form. Don't make it the same, Even though the time period requested and the time period in the form might be different, please please please please consider the form but make sure to match the time period requested.
+                I give you a basic form. I'll give you the basic form. Please fill out the same form. However, please keep this in mind and create a roadmap to match the requested period because the requested period and the form period may be different.
                 form : [{roadmap_form}]
                 """
     
