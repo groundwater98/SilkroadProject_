@@ -18,7 +18,7 @@ import { mock_getApiOccupation, mock_getApiOutlook } from 'api/mockAPIs';
 import Sources from './Sources';
 import useQuery from 'app/hooks/useQuery';
 
-const mode: 'UI_TEST' | 'API_TEST' = 'API_TEST';
+const mode: 'UI_TEST' | 'API_TEST' = 'UI_TEST';
 
 export function DetailPage() {
   const queryParams = useQuery();
@@ -45,7 +45,9 @@ export function DetailPage() {
   ) => {
     try {
       const response = await (mode === 'UI_TEST'
-        ? mock_getApiOccupation(query, period, periodType)
+        ? query === '백엔드 개발자'
+          ? mock_getApiOccupation(query, period, periodType, 2)
+          : mock_getApiOccupation(query, period, periodType, 1)
         : getApiOccupation(query, period, periodType));
       setOccupationData({
         ...response.data,
@@ -69,7 +71,9 @@ export function DetailPage() {
   const doGetApiOutlook = async (query: string) => {
     try {
       const response = await (mode === 'UI_TEST'
-        ? mock_getApiOutlook(query)
+        ? query === '백엔드 개발자'
+          ? mock_getApiOutlook(query, 2)
+          : mock_getApiOutlook(query, 1)
         : getApiOutlook(query));
       setOutlookData(response.data);
     } catch (error) {
@@ -121,7 +125,7 @@ export function DetailPage() {
             >
               <div style={{ paddingBottom: '128px' }} />
               <DisplayLarge color="#000">
-                {occupationData.occupation.replace("\\",'').replace('"','')}
+                {occupationData.occupation.replace('\\', '').replace('"', '')}
                 {/* {occupationData.title.split(' (')[0]} */}
               </DisplayLarge>
               {/* <div style={{ paddingBottom: '32px' }} />
